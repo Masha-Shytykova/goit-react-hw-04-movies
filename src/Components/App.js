@@ -7,12 +7,14 @@ import NotFoundViews from '../views/NotFoundViews';
 const App = () => {
   return (
     <>
-      <NavLink exact to="/" className="link" activeClassName="activeLink">
-        Home
-      </NavLink>
-      <NavLink to="/movies" className="link" activeClassName="activeLink">
-        Movies
-      </NavLink>
+      <nav>
+        <NavLink exact to="/" className="link" activeClassName="activeLink">
+          Home
+        </NavLink>
+        <NavLink to="/movies" className="link" activeClassName="activeLink">
+          Movies
+        </NavLink>
+      </nav>
 
       <Switch>
         <Route path="/" exact>
@@ -25,6 +27,10 @@ const App = () => {
 
         <Route path="/movies/:movieId">
           <MovieDetailsPageViews />
+        </Route>
+
+        <Route path="/error" exact>
+          <NotFoundViews />
         </Route>
 
         <Route>

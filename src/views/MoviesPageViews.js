@@ -1,3 +1,7 @@
-export default function MoviesPageViews() {
-  return <h1>movies page</h1>;
-}
+import MoviesPage from '../Components/MoviesPage/MoviesPage';
+
+const MoviesPageViews = () => {
+  return <MoviesPage />;
+};
+
+export default MoviesPageViews;
