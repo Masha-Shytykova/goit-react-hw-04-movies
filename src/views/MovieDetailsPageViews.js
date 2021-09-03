@@ -1,8 +1,17 @@
+import { lazy, Suspense } from 'react';
 import { useLocation, useRouteMatch, Route, NavLink } from 'react-router-dom';
 import MovieDetailsPage from '../Components/MovieDetailsPage/MovieDetailsPage';
-import CastViews from './CastViews';
-import ReviewsViews from './ReviewsViews';
 
+//import CastViews from './CastViews';
+//import ReviewsViews from './ReviewsViews';
+
+const CastViews = lazy(() =>
+  import('./CastViews' /* webpackChunkName: "cast-page" */),
+);
+
+const ReviewsViews = lazy(() =>
+  import('./ReviewsViews' /* webpackChunkName: "reviews-page" */),
+);
 const MovieDetailsPageViews = () => {
   const { url, path } = useRouteMatch();
   const location = useLocation();
@@ -35,17 +44,19 @@ const MovieDetailsPageViews = () => {
         </NavLink>
       </div>
 
-      <Route path={`${path}/cast`} exact>
-        <div className="container">
-          <CastViews />
-        </div>
-      </Route>
+      <Suspense fallback={<h3>Loading...</h3>}>
+        <Route path={`${path}/cast`} exact>
+          <div className="container">
+            <CastViews />
+          </div>
+        </Route>
 
-      <Route path={`${path}/reviews`} exact>
-        <div className="container">
-          <ReviewsViews />
-        </div>
-      </Route>
+        <Route path={`${path}/reviews`} exact>
+          <div className="container">
+            <ReviewsViews />
+          </div>
+        </Route>
+      </Suspense>
     </>
   );
 };
