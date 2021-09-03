@@ -1,13 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Link, useRouteMatch, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import * as ServiceApi from '../../utils/ServiceApi';
 
 export default function HomePage() {
-  const { url } = useRouteMatch();
   const location = useLocation();
   const [trends, setTrends] = useState(null);
 
-  console.log(url);
   useEffect(() => {
     ServiceApi.fetchTrending().then(data => setTrends(data.results));
   }, []);

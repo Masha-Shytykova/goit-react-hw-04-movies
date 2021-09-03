@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import * as ServiceApi from '../../utils/ServiceApi';
+import s from './MoviesPage.module.css';
 
 export default function MoviesPage() {
   const history = useHistory();
@@ -39,8 +40,9 @@ export default function MoviesPage() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={s.form}>
         <input
+          className={s.input}
           type="text"
           autoComplete="off"
           autoFocus
@@ -48,7 +50,9 @@ export default function MoviesPage() {
           value={inputQuery}
           onChange={handleInputChange}
         ></input>
-        <button type="submit">Search</button>
+        <button type="submit" className={s.button}>
+          Search
+        </button>
       </form>
       <ul>
         {movies &&

@@ -1,12 +1,7 @@
 import { useState, useEffect } from 'react';
-import {
-  useParams,
-  useLocation,
-  useHistory,
-  useRouteMatch,
-  Redirect,
-} from 'react-router-dom';
+import { useParams, useLocation, useHistory, Redirect } from 'react-router-dom';
 import * as ServiceApi from '../../utils/ServiceApi';
+import s from '../MovieDetailsPage/MovieDetailsPage.module.css';
 
 export default function MovieDetailsPage() {
   const history = useHistory();
@@ -28,27 +23,42 @@ export default function MovieDetailsPage() {
     <>
       {error && <Redirect to="/error" />}
       {movie && (
-        <>
+        <div className="container">
           <button type="button" onClick={handleGoBackClick}>
             Go Back
           </button>
-          <img
-            src={'https://image.tmdb.org/t/p/w500' + movie.poster_path}
-            alt={movie.title}
-            className="imagegrtg"
-          />
-          <h2>
-            {movie.title} ({movie.release_date.substr(0, 4)})
-          </h2>
-          <p>User score: {movie.vote_average}</p>
-          <p>Overview: {movie.overview}</p>
-          <p>
-            Genres:
-            {movie.genres.slice(0, 2).map(genre => {
-              return `${genre.name} `;
-            })}
-          </p>
-        </>
+          <div className={s.card_container}>
+            <img
+              className={s.image_wrapper}
+              src={'https://image.tmdb.org/t/p/w300' + movie.poster_path}
+              alt={movie.title}
+            />
+
+            <div className={s.card_description}>
+              <h2>
+                {movie.title} ({movie.release_date.substr(0, 4)})
+              </h2>
+
+              <span className={s.description}>
+                {' '}
+                User score: {movie.vote_average}
+              </span>
+
+              <h3>
+                Overview:
+                <span className={s.description}>{movie.overview} </span>
+              </h3>
+              <h3>
+                Genres:
+                <span className={s.description}>
+                  {movie.genres.slice(0, 3).map(genre => {
+                    return `${genre.name} `;
+                  })}
+                </span>
+              </h3>
+            </div>
+          </div>
+        </div>
       )}
     </>
   );

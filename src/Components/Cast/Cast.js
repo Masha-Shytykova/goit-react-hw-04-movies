@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import * as ServiceApi from '../../utils/ServiceApi';
+import s from '../Cast/Cast.module.css';
 
 export default function Cast() {
   const { movieId } = useParams();
@@ -12,23 +13,21 @@ export default function Cast() {
       .catch(error => console.log(error));
   }, [movieId]);
 
-  if (cast) {
-    console.log(cast);
-  }
-
   return (
     <>
       {cast && (
-        <ul>
+        <ul className={s.cast_list}>
           {cast.slice(0, 5).map(item => (
-            <li key={item.id}>
-              <img
-                src={'https://image.tmdb.org/t/p/w500' + item.profile_path}
-                alt={item.title}
-                className="imagegrtg"
-              />
-              <h2>{item.name}</h2>
-              <p>Character: {item.character}</p>
+            <li key={item.id} className={s.item}>
+              <div className={s.cardcontainer}>
+                <img
+                  src={'https://image.tmdb.org/t/p/w200' + item.profile_path}
+                  alt={item.title}
+                  className="imagegrtg"
+                />
+                <h3>{item.name}</h3>
+                <p>Character: {item.character}</p>
+              </div>
             </li>
           ))}
         </ul>

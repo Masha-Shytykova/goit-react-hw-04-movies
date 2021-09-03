@@ -1,0 +1,22 @@
+.form {
+  padding: 15px;
+}
+.input {
+  height: 30px;
+  width: 250px;
+  margin-right: 7px;
+  font-size: 16px;
+  line-height: 1.87;
+}
+
+.button {
+  height: 35px;
+  min-width: 90px;
+
+  cursor: pointer;
+
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 1.87;
+  text-align: center;
+}
