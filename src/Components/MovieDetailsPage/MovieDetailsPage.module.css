@@ -14,7 +14,7 @@
 }
 .image_wrapper {
   display: block;
-  min-width: 300px;
-  height: 450px;
+  max-width: 300px;
+
   background-color: lavender;
 }
