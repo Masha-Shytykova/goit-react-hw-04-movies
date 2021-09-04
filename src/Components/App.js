@@ -2,11 +2,6 @@ import { lazy, Suspense } from 'react';
 import { NavLink, Route, Switch } from 'react-router-dom';
 import Loader from './Loader/Loader';
 
-//import HomePageViews from '../views/HomePageViews';
-//import MoviesPageViews from '../views/MoviesPageViews';
-//import MovieDetailsPageViews from '../views/MovieDetailsPageViews';
-//import NotFoundViews from '../views/NotFoundViews';
-
 const HomePageViews = lazy(() =>
   import('../views/HomePageViews' /* webpackChunkName: "home-page" */),
 );

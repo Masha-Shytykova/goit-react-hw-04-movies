@@ -2,9 +2,6 @@ import { lazy, Suspense } from 'react';
 import { useLocation, useRouteMatch, Route, NavLink } from 'react-router-dom';
 import MovieDetailsPage from '../Components/MovieDetailsPage/MovieDetailsPage';
 
-//import CastViews from './CastViews';
-//import ReviewsViews from './ReviewsViews';
-
 const CastViews = lazy(() =>
   import('./CastViews' /* webpackChunkName: "cast-page" */),
 );

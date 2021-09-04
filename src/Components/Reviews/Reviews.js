@@ -10,10 +10,6 @@ export default function Reviews() {
     ServiceApi.fetchReviews({ movieId }).then(data => setReviews(data.results));
   }, [movieId]);
 
-  if (reviews) {
-    console.log(reviews);
-  }
-
   return (
     <>
       {reviews && reviews.length > 0 && (
